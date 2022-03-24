@@ -1,4 +1,3 @@
-from re import L
 from board import *
 class Player:
     def __init__(self):
