@@ -1,3 +1,4 @@
+from re import L
 from board import *
 class Player:
     def __init__(self):
@@ -15,3 +16,12 @@ class PlayerChain:
         while cur.next:
             cur=cur.next
         cur.next=new_player
+    def make_circular(self):
+        cur=self.first_player
+        while cur.next:
+            cur=cur.next
+        cur.next=self.first_player
+
+class Game:
+    def __init__(self) -> None:
+        pass
