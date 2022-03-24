@@ -1,10 +1,11 @@
 class Square:
-    def __init__(self,name,price,set,type,rent,next=None):
+    def __init__(self,name,price,set,type,rent,next=None,prev=None):
         self.name=name
         self.price=price
         self.set=set
         self.type=type
         self.next=next
+        self.prev=prev
         self.rent=rent
         self.is_full_set=False
         self.owner=None
@@ -18,6 +19,7 @@ class Board:
         while cur.next:
             cur=cur.next
         cur.next=new_square
+        new_square.prev=cur
     def make_circular(self):
         cur=self.first_square
         while cur.next:
