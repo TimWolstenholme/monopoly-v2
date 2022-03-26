@@ -1,10 +1,8 @@
-from xml.sax.handler import all_properties
-
-
 class Square:
     def __init__(self,name,price,set,type,rent,next=None,prev=None):
         self.name=name
         self.price=price
+        self.mortgage_price=self.price/2
         self.set=set
         self.type=type
         self.next=next
