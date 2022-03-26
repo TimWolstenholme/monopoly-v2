@@ -1,3 +1,6 @@
+from xml.sax.handler import all_properties
+
+
 class Square:
     def __init__(self,name,price,set,type,rent,next=None,prev=None):
         self.name=name
@@ -64,7 +67,9 @@ if __name__=='__main__':
     monopoly_board.add_square(Square("Liverpool Street Station",200,'Station','property',None))
     monopoly_board.add_square(Square("Chance",None,None,'chance',None))
     monopoly_board.add_square(Square("Park Lane",350,'DBlue','property',35))
+    monopoly_board.add_square(Square("Super Tax",None,None,'tax',100))
     monopoly_board.add_square(Square("Mayfair",400,'DBlue','property',50))
     monopoly_board.make_circular()
+    all_properties=['Old Kent Road','Whitechapel Road','Kings Cross Station','The Angel Islington','Euston Road','Pentonville Road','Pall Mall','Eletric Company','Whitehall','Northumberland Avenue','Marylebone Station','Bow Street','Marlborough Street','Vine Street','Strand','Fleet Street','Trafalgar Square','Fenchurch Street Station','Leicester Square','Coventry Street','Piccadilly','Regent Street','Oxford Street','Bond Street','Liverpool Street Station','Park Lane','Mayfair']
 
 

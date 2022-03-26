@@ -31,6 +31,7 @@ class Game:
         self.players.cur_player.property.append(self.players.cur_player.board_locations.name)
         self.players.cur_player.money-=self.players.cur_player.board_locations.price
         print(f"{self.players.cur_player.board_locations} bought for {self.players.cur_player.board_locations.price}")
+        all_properties.remove(self.players.cur_player.board_locations.name)
     def next_player(self):
         self.players.cur_player=self.players.cur_player.next
     
