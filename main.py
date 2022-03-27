@@ -64,7 +64,15 @@ class Game:
         else:
             self.players.cur_player.money-=50
             self.move()
-
+    def check_game_end(self):
+        cur=self.players.cur_player
+        cur:Player=cur.next
+        while cur!=self.players.cur_player:
+            if cur.money ==0 and len(cur.property)==0:
+                return True
+        return False
+    def end_game(self):
+        pass
 
     
     
