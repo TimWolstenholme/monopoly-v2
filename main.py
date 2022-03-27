@@ -1,4 +1,5 @@
 from board import *
+from random import randint
 class Player:
     def __init__(self,next=None):
         self.money=2000
@@ -8,6 +9,7 @@ class Player:
         self.board_locations=monopoly_board.first_square
         self.location_name=self.board_locations.name
         self.next=None
+        self.jail_count=0
 class PlayerChain:
     def __init__(self,first_player:Player):
         self.first_player=first_player
@@ -40,6 +42,29 @@ class Game:
             cur=cur.next
         property_mortgage_cost=cur.mortgage_price
         self.players.cur_player.money+=property_mortgage_cost
+    def move(self):
+        total_roll=randint(1,6)+randint(1,6)
+        for i in range(total_roll):
+            self.players.cur_player.board_locations=self.players.cur_player.board_locations.next
+
+    def go_to_jail(self):
+        self.players.cur_player.in_jail=True
+       
+    def leave_jail(self):
+        if self.players.cur_player.jail_count<3:
+            d1=randint(1,6)
+            d2=randint(1,6)
+            if d1==d2:
+                self.players.cur_player.in_jail=False
+                for i in range(d1+d2):
+                    self.players.cur_player.board_locations=self.players.cur_player.board_locations.next
+                    self.players.cur_player.jail_count=0
+            else:
+                self.players.cur_player.jail_count+=1
+        else:
+            self.players.cur_player.money-=50
+            self.move()
+
 
     
     
