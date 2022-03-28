@@ -40,7 +40,7 @@ class Game:
     def buy_property(self):
         self.players.cur_player.property.append(self.players.cur_player.board_locations)
         self.players.cur_player.money-=self.players.cur_player.board_locations.price
-        print(f"{self.players.cur_player.board_locations} bought for {self.players.cur_player.board_locations.price}")
+        print(f"{self.players.cur_player.location_name} bought for {self.players.cur_player.board_locations.price}")
         all_properties.remove(self.players.cur_player.board_locations.name)
     def mortgage_property(self,property):
         self.players.cur_player.property.remove(property)
