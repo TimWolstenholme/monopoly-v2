@@ -1,7 +1,9 @@
+from lib2to3.pytree import Node
 from board import *
 from random import randint
 class Player:
-    def __init__(self,next=None):
+    def __init__(self,name,next=None):
+        self.name=name
         self.money=2000
         self.property=[]
         self.mortgages=[]
@@ -24,13 +26,19 @@ class PlayerChain:
         while cur.next:
             cur=cur.next
         cur.next=self.first_player
+    def remove_player(self,node):
+        cur=Node
+        while cur.next.next!=node:
+            cur=cur.next
+        cur.next=cur.next.next
+
 
 class Game:
     def __init__(self,players:PlayerChain) -> None:
         self.end=False
         self.players=players
     def buy_property(self):
-        self.players.cur_player.property.append(self.players.cur_player.board_locations.name)
+        self.players.cur_player.property.append(self.players.cur_player.board_locations)
         self.players.cur_player.money-=self.players.cur_player.board_locations.price
         print(f"{self.players.cur_player.board_locations} bought for {self.players.cur_player.board_locations.price}")
         all_properties.remove(self.players.cur_player.board_locations.name)
@@ -64,17 +72,19 @@ class Game:
         else:
             self.players.cur_player.money-=50
             self.move()
-    def check_game_end(self):
+    def check_player_number(self):
         cur=self.players.cur_player
         cur:Player=cur.next
         while cur!=self.players.cur_player:
             if cur.money ==0 and len(cur.property)==0:
-                return True
+                self.players.remove_player(cur)
+                print(f"{self.players.cur_player.name} is eliminated as they have no non morgadged propeties or money")
+        first=self.players.cur_player
+        cur=first.next
+        if cur==first:
+            return True
         return False
-    def end_game(self):
-        pass
 
-    
     
     
     def next_player(self):
