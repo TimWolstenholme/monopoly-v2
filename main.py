@@ -1,4 +1,3 @@
-from lib2to3.pytree import Node
 from board import *
 from random import randint
 class Player:
@@ -27,7 +26,7 @@ class PlayerChain:
             cur=cur.next
         cur.next=self.first_player
     def remove_player(self,node):
-        cur=Node
+        cur=node
         while cur.next.next!=node:
             cur=cur.next
         cur.next=cur.next.next
