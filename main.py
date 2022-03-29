@@ -78,7 +78,7 @@ class Game:
         while cur!=self.players.cur_player:
             if cur.money ==0 and len(cur.property)==0:
                 self.players.remove_player(cur)
-                print(f"{self.players.cur_player.name} is eliminated as they have no non morgadged propeties or money")
+                print(f"{self.players.cur_player.name} is eliminated as they have no non mortgaged propeties or money")
         first=self.players.cur_player
         cur=first.next
         if cur==first:
